@@ -1,7 +1,7 @@
 {
   "name": "fdpms-report",
   "version": "1.0.0",
-  "description": "### 上报 sdk 有五种",
+  "description": "fdpms-report 是一款浏览器端页面性能，ajax, fetch ,错误信息，资源性能上报 SDK，资源小巧，性能强悍",
   "main": "main.js",
   "directories": {
     "test": "test"
