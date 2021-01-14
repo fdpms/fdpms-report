@@ -1,5 +1,7 @@
 ### fdpms-report 是一款浏览器端页面性能，ajax, fetch ,错误信息，资源性能上报 SDK，资源小巧，性能强悍
 
+forked from https://github.com/wangweianger/web-report-sdk
+
 ### 上报 sdk 有五种
 
 > -   一 ：所有类型通用的上报 SDK 即：fdpms-report-default.js
