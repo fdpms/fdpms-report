@@ -1,41 +1,53 @@
-### fdpms-report 是一款浏览器端页面性能，ajax, fetch ,错误信息，资源性能上报 SDK，资源小巧，性能强悍
+# fdpms-report
 
-forked from https://github.com/wangweianger/web-report-sdk
+## fdpms-report 是一款前端页面性能、ajax/fetch、错误信息和资源性能上报 SDK，资源小巧，性能强悍
 
-### 上报 sdk 有五种
+> forked from https://github.com/wangweianger/web-report-sdk
 
-> -   一 ：所有类型通用的上报 SDK 即：fdpms-report-default.js
-> -   二 ：针对于使用 Jquery ajax 的上报 SDK 即：fdpms-report-jquery.js
-> -   三 ：针对于使用 Axios ajax 的上报 SDK 即：fdpms-report-axios.js
-> -   四 ：针对于使用 Fetch ajax 的上报 SDK 即：fdpms-report-fetch.js
-> -   五 ：针对于业务代码手动触发的上报 SDK 即：fdpms-report-none.js
+### SDK NPM 地址
+
+https://www.npmjs.com/package/fdpms-report
+
+
+### 本 SDK 对应有一款完善的前端性能监控系统
+
+https://github.com/fdpms/fdpms
+
+
+### SDK 有五种类型
+
+> 1. 所有类型通用的上报 SDK 即：fdpms-report-default.js
+> 2. 针对于使用 Jquery ajax 的上报 SDK 即：fdpms-report-jquery.js
+> 3. 针对于使用 Axios ajax 的上报 SDK 即：fdpms-report-axios.js
+> 4. 针对于使用 Fetch ajax 的上报 SDK 即：fdpms-report-fetch.js
+> 5. 针对于业务代码手动触发的上报 SDK 即：fdpms-report-none.js
 
 -   通用版本适合所有上报情况
--   至于四种 sdk 的选择可酌情选择。通常来说专库专用会更好，因此使用 jquery 的推荐第二种，使用 fetch 的推荐第三种,使用 Axios 的推荐第三种，其他情况使用通用版本
+-   至于四种 SDK 的选择可酌情选择。通常来说专库专用会更好，因此使用 jquery 的推荐第二种，使用 fetch 的推荐第三种,使用 Axios 的推荐第三种，其他情况使用通用版本
 
 -   fdpms-report 只做页面性，错误信息，资源信息，ajax 信息等上报，让你不用关心浏览器上报部分，是一个比较完整和健全的数据上报插件。
 -   在此基础上你可以开发任何自己需要的性能上报系统。
 
 ### fdpms-report 主要上报以下性能信息
 
-> -   url 上报页面地址
-> -   preUrl 来访上一页面 URL
-> -   performance 页面性能数据详情，字段含义详情请参考后面内容
-> -   errorList 页面错误信息详情，包含 js,img,ajax,fetch 等所有错误信息，字段含义详情请参考后面内容
-> -   resoruceList 页面性能数据详情，当前页面所有资源性能详情信息，字段含义详情请参考后面内容
-> -   markUv 统计 uv 标识
-> -   markUser 从用户进入网站开始标识，直到用户离开销毁，可以用来做用户漏斗分析
-> -   time 当前上报时间
-> -   screenwidth 屏幕宽度
-> -   screenheight 屏幕高度
-> -   isFristIn 是否是某次会话的第一次进入
-> -   type 上报类型 1:页面级性能上报 2:页面 ajax 性能上报 3：页面内错误信息上报
+> -   url: 上报页面地址
+> -   preUrl: 来访上一页面 URL
+> -   performance: 页面性能数据详情，字段含义详情请参考后面内容
+> -   errorList: 页面错误信息详情，包含 js,img,ajax,fetch 等所有错误信息，字段含义详情请参考后面内容
+> -   resoruceList: 页面性能数据详情，当前页面所有资源性能详情信息，字段含义详情请参考后面内容
+> -   markUv: 统计 uv 标识
+> -   markUser: 从用户进入网站开始标识，直到用户离开销毁，可以用来做用户漏斗分析
+> -   time: 当前上报时间
+> -   screenwidth: 屏幕宽度
+> -   screenheight: 屏幕高度
+> -   isFristIn: 是否是某次会话的第一次进入
+> -   type: 上报类型 1: 页面级性能上报 2: 页面 ajax 性能上报 3：页面内错误信息上报
 
 ### 浏览器页面直接引用资源方式：
 
-> -   1、下载 dist/fdpms-report-default.min.js 到本地
-> -   2、使用 script 标签引入到 html 的头部（备注：放到所有 js 资源之前）
-> -   3、使用 performance 函数进行数据的监听上报
+> 1. 下载 dist/fdpms-report-default.min.js 到本地
+> 2. 使用 script 标签引入到 html 的头部（备注：放到所有 js 资源之前）
+> 3. 使用 performance 函数进行数据的监听上报
 
 ```html
 <html>
@@ -45,26 +57,28 @@ forked from https://github.com/wangweianger/web-report-sdk
         <script src="../dist/fdpms-report-default.min.js"></script>
         <script>
             Performance({
-                domain: 'http://some.com/api', //Your API address
-            })
+                domain: "https://fdpms.com/api", //Your API address
+            });
         </script>
     </head>
 </html>
 ```
 
-### npm 引入方式
+### npm 引入方式和使用
+
+```shell
+npm install fdpms-report --save
+```
 
 ```js
-npm install fdpms-report --save
-
 import {
-  Performance,
-  axiosReport,
-  defaultReport,
-  fetchReport,
-  jqueryReport,
-  noneReport
-} from 'fdpms-report'
+    Performance,
+    axiosReport,
+    defaultReport,
+    fetchReport,
+    jqueryReport,
+    noneReport
+} from "fdpms-report";
 
 ```
 
@@ -86,26 +100,25 @@ Performance({
 ```
 
 ```js
-//Change webpack configuration
+// Change webpack configuration
 
 entry: {
-    //add performance entry
-    'performance':path.resolve(__dirname, '../src/performance.js'),
+    // add performance entry
+    'performance': path.resolve(__dirname, '../src/performance.js'),
 },
 
-//change htmlWebpackPlugin config like this
-//Attention to dependence
+// change htmlWebpackPlugin config like this
+// Attention to dependence
 new htmlWebpackPlugin({
     ...
-    chunks: ['vendors','performance','main'],
-    chunksSortMode: 'manual',
-}),
-
+    chunks: ['vendors', 'performance', 'main'],
+    chunksSortMode: 'manual'
+})
 ```
 
-### none JDK 使用方法
+### none SDK 使用方法
 
--   none JDK 在程序中使用 window.ReportData();来触发上报
+-   none SDK 在程序中使用 window.ReportData() 来触发上报
 -   在多页面中可加载插件后调用 window.ReportData() 方法直接上报。
 -   在 vue 中可如此使用：
 
@@ -113,41 +126,33 @@ new htmlWebpackPlugin({
 router.afterEach((to, from, next) => {
     if (from.name) {
         try {
-            window.ReportData()
+            window.ReportData();
         } catch (e) {}
     } else {
-        addEventListener(
-            'load',
+        window.addEventListener("load",
             function () {
                 try {
-                    window.ReportData()
+                    window.ReportData();
                 } catch (e) {}
             },
             false
-        )
+        );
     }
-})
+});
 ```
 
 -   在 react 中也可以使用 withRouter 对路由跳转后进行统一上报。
 
-### 以下我根据此 SDK 开发的一款完整版本前端性能监控系统
-
-https://github.com/fdpms/fdpms
-
-### SDK npm 地址
-
-https://www.npmjs.com/package/fdpms-report
 
 ### 注意事项
 
--   jquery 和 axios JDK 需要放在 jquery 或 axios 之后，不然 ajax 错误性信息无法采集
+-   jquery 和 axios SDK 需要放在 jquery 或 axios 之后，不然 ajax 错误性信息无法采集
 
 ### 单页面程序上报处理
 
 -   增加每次会话的第一次进入标识：isFristIn，客观的统计用户第一次进入页面性能数据
 -   单页面应用程序路由切换时根据页面是否有 ajax 请求进行性能的上报
--   也可以自行使用 none 类型 jdk 配合路由钩子进行上报
+-   也可以自行使用 none 类型 SDK 配合路由钩子进行上报
 
 ### 上报参数 type 值说明（重要）
 
@@ -171,56 +176,55 @@ https://www.npmjs.com/package/fdpms-report
 -   案例
 
 ```js
-1、最简单最常用的上报
+// 1、最简单最常用的上报
 Performance({
-  domain:'http://some.com/api'  //你的api地址
+    domain: 'https://fdpms.com/api' // 你的api地址
 })
 
-2、加add参数上报
+// 2、加add参数上报
 Performance({
-  domain:'http://some.com/api'  //你的api地址
-  add:{
-    appId:'123456789'
-  }
+    domain: 'https://fdpms.com/api' // 你的api地址
+    add: {
+        appId:'123456789'
+    }
 })
 
-3、自己写fetch fn上报
-Performance({},data=>{
-  fetch('http://some.com/api',{
-    type:'POST',
-    report:'report-data',
-    headers: {'Content-Type': 'application/json'},
-    body:JSON.stringify(data)
-  }).then((data)=>{})
+// 3、自己写fetch fn上报
+Performance({}, data => {
+    fetch('https://fdpms.com/api', {
+        type: 'POST',
+        report: 'report-data',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    }).then((data)=>{})
 })
 
-4、自己写AJAX fn上报
-Performance({},data=>{
-  $.ajax({
-    type:'POST',
-    report:'report-data',
-    contentType: 'application/json',
-    data:{
-      data:data
-    },
-    success:data=>{}
-  })
+// 4、自己写AJAX fn上报
+Performance({}, data => {
+    $.ajax({
+        type: 'POST',
+        report: 'report-data',
+        contentType: 'application/json',
+        data: {
+            data: data
+        },
+        success: data => {}
+    })
 })
 
 5、完整版本的上报案例
 Performance({
-    domain:'http://some.com/api',
-    outtime:500,
-    isPage:true,
-    isAjax:true,
-    isResource:true,
-    isError:true,
-    add:{
-      appId:'123456789'
+    domain: 'https://fdpms.com/api',
+    outtime: 500,
+    isPage: true,
+    isAjax: true,
+    isResource: true,
+    isError: true,
+    add: {
+        appId:'123456789'
     },
     filterUrl:['http://localhost:35729/livereload.js?snipver=1']
 })
-
 ```
 
 ### 对外方法：
@@ -229,17 +233,17 @@ Performance({
 案例：
 
 ```js
-let message = 'js add error'
-let col = 20
-let line = 20
-let resourceUrl = 'http://www.xxx.com/01.js'
+let message = "js add error";
+let col = 20;
+let line = 20;
+let resourceUrl = "http://www.xxx.com/01.js";
 
 Performance.addError({
     msg: message,
     col: col,
     line: line,
     resourceUrl: resourceUrl,
-})
+});
 ```
 
 二：addData ：上报时自定义的数据
@@ -247,12 +251,12 @@ Performance.addError({
 
 ```js
 Performance.addData((data) => {
-    data.name = 'wangwei'
+    data.name = "wangwei";
     data.some = {
-        name: 'wangwie',
+        name: "wangwie",
         age: 20,
-    }
-})
+    };
+});
 ```
 
 ## USE Vue
@@ -263,22 +267,22 @@ If you use the Vue framework, you can do it like this.
 -   2、Copy the following code
 
 ```js
-import { Performance } from 'fdpms-report'
+import { Performance } from "fdpms-report";
 
 Vue.config.errorHandler = function (err, vm, info) {
-    let { message, stack } = err
+    let { message, stack } = err;
 
     // Processing error
-    let resourceUrl, col, line
-    let errs = stack.match(/\(.+?\)/)
-    if (errs && errs.length) errs = errs[0]
+    let resourceUrl, col, line;
+    let errs = stack.match(/\(.+?\)/);
+    if (errs && errs.length) errs = errs[0];
     errs = errs.replace(/\w.+js/g, ($1) => {
-        resourceUrl = $1
-        return ''
-    })
-    errs = errs.split(':')
-    if (errs && errs.length > 1) line = parseInt(errs[1] || 0)
-    col = parseInt(errs[2] || 0)
+        resourceUrl = $1;
+        return "";
+    });
+    errs = errs.split(":");
+    if (errs && errs.length > 1) line = parseInt(errs[1] || 0);
+    col = parseInt(errs[2] || 0);
 
     // Fixed parameters
     // Call the Performance.addError method
@@ -287,8 +291,8 @@ Vue.config.errorHandler = function (err, vm, info) {
         col: col,
         line: line,
         resourceUrl: resourceUrl,
-    })
-}
+    });
+};
 ```
 
 ## USE React
@@ -330,7 +334,7 @@ componentDidCatch(error, info) {
 
 ## Runing
 
-```js
+```shell
 git clone https://github.com/fdpms/fdpms-report.git
 npm install
 
